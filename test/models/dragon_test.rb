@@ -53,10 +53,8 @@ class DragonTest < ActiveSupport::TestCase
 
   def test_that_the_right_rider_can_mount
     # use your knowledge of factories to make this test pass!
-    owner = build(:rider, name: 'Aegon', id: 1)
-    owner.save
-    dragon = build(:dragon, name: 'Balerion', rider_id: 1)
-    dragon.save
+    owner = build(:rider, name: 'Aegon')
+    dragon = build(:dragon, name: 'Balerion', rider: owner)
     # not allowed to change the assert statement!
     skip unless owner && dragon
     assert_equal("Aegon soars into the air on Balerion's back!", dragon.mount(owner))
